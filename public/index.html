@@ -2,62 +2,89 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Harsh Mohodo - Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harsh Prakash Mohod | Portfolio</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5rem 2rem;
+        text-align: center;
+        background: linear-gradient(to right, #0f172a, #1e293b);
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #facc15;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 2rem;
+      }
+
+      .hero .buttons a {
+        margin: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #f59e0b;
+        transition: background-color 0.3s ease;
+      }
+
+      .hero .buttons a:hover {
+        background-color: #d97706;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <h1>Harsh Prakash Mohod</h1>
-        <ul>
-          <li><a href="aboutme.html">About Me</a></li>
-          <li><a href="education.html">Education</a></li>
-          <li><a href="skill.html">Skills</a></li>
-          <li><a href="photos.html">Photos</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="navbar">
+      <h1>Harsh Mohodo</h1>
+      <ul>
+        <li><a href="aboutme.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="skill.html">Skills</a></li>
+        <li><a href="project.html">Projects</a></li>
+        <li><a href="photos.html">Photos</a></li>
+        <li><a href="certificate.html">Certificates</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
 
-    <main>
-      <section class="intro">
-        <h2>Welcome to my personal website</h2>
-        <p>
-          This website showcases everything about me — my skills, work,
-          achievements, and thoughts.
-        </p>
-      </section>
+    <section class="hero">
+      <h1>Welcome to My World</h1>
+      <p>
+        Hi! I'm <strong>Harsh Prakash Mohodo</strong>, passionate about AI,
+        Python, Web Dev, and everything tech. This is my portfolio — stylish,
+        interactive, and uniquely me.
+      </p>
+      <div class="buttons">
+        <a href="resume.html">View Resume</a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank"
+          >GitHub</a
+        >
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank"
+          >WhatsApp Me</a
+        >
+      </div>
+    </section>
 
-      <section class="contact-links">
-        <h3>Connect with me:</h3>
-        <ul>
-          <li>
-            <a href="https://wa.me/919999999999" target="_blank">WhatsApp</a>
-          </li>
-          <li>
-            <a href="https://github.com/Harshmohod" target="_blank">GitHub</a>
-          </li>
-          <li>
-            <a href="https://t.me/yourtelegramusername" target="_blank"
-              >Telegram</a
-            >
-          </li>
-          <li>
-            <a href="https://www.instagram.com/yourinsta" target="_blank"
-              >Instagram</a
-            >
-          </li>
-        </ul>
-      </section>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 Harsh Prakash Mohod. All rights reserved.</p>
-    </footer>
-
-    <script src="js/navbar.js"></script>
+    <div class="footer">&copy; 2025 Harsh Mohodo | All rights reserved</div>
   </body>
 </html>

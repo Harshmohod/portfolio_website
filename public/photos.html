@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery - Harsh Mohodo</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 1rem;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Harsh Mohodo</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="photos.html">Photos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <section class="container">
+      <h2>My Photo Gallery</h2>
+      <div class="gallery" id="gallery">
+        <!-- Firebase images will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+
+    <!-- Firebase Config File -->
+    <script src="assets/js/firebaseconfig.js"></script>
+
+    <!-- Load photos from Firestore -->
+    <script>
+      const db = firebase.firestore();
+      const galleryDiv = document.getElementById("gallery");
+
+      db.collection("gallery")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            const url = doc.data().url;
+            const img = document.createElement("img");
+            img.src = url;
+            galleryDiv.appendChild(img);
+          });
+        })
+        .catch((error) => {
+          console.error("Error loading gallery:", error);
+          galleryDiv.innerHTML =
+            "<p style='color: red;'>Failed to load photos.</p>";
+        });
+    </script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
+    <script src="../firebase.js" defer></script>
+    <script src="../admin.js" defer></script>
+  </body>
+</html>

@@ -2,17 +2,30 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>Admin Dashboard - Harsh Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
   </head>
   <body>
-    <div class="admin-container">
-      <h2>Restricted Access</h2>
-      <p>
-        This is a private Admin Panel. If you are the owner, please
-        <a href="../adminlogin.html">login here</a>.
-      </p>
+    <div class="admin-header">
+      <h1>Admin Dashboard</h1>
+      <p>Welcome, Harsh. You can manage your portfolio here.</p>
     </div>
+
+    <div class="admin-container">
+      <a href="upload_photo.html">📷 Upload Photo</a>
+      <a href="upload_certificate.html">📄 Upload Certificate</a>
+      <a href="update_aboutme.html">📝 Update About Me</a>
+      <a href="upload_resume.html">📎 Upload Resume</a>
+      <!-- Optional future admin tools -->
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
+    <script src="../firebase.js" defer></script>
+    <script src="../admin.js" defer></script>
   </body>
 </html>

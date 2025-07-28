@@ -3,55 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me | Harsh Prakash Mohod</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>About Me - Harsh Mohodo</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .about-section {
+        background: linear-gradient(to right, #0f172a, #1e293b);
+        color: #f8fafc;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        max-width: 900px;
+        margin: 3rem auto;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .about-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        color: #facc15;
+      }
+
+      .about-section p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        white-space: pre-line;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <nav>
-        <h1>Harsh Prakash Mohod</h1>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="education.html">Education</a></li>
-          <li><a href="skill.html">Skills</a></li>
-          <li><a href="photos.html">Photos</a></li>
-          <li><a href="resume.html">Resume</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div class="navbar">
+      <h1>Harsh Mohodo</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="aboutme.html">About Me</a></li>
+        <li><a href="photos.html">Photos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
 
-    <main>
-      <section class="about-me">
-        <h2>About Me</h2>
-        <p>
-          Hello! I'm <strong>Harsh Prakash Mohod</strong>, a passionate
-          developer and learner who loves technology, creativity, and building
-          cool digital things.
-        </p>
+    <section class="about-section">
+      <h2>About Me</h2>
+      <p id="aboutText">
+        <!-- About Me content will load here -->
+      </p>
+    </section>
 
-        <p>
-          This website is not just a portfolio—it's my personal space to show
-          who I am, what I’ve done, and what I’m building. I work on
-          frontend/backend projects, play around with AI/ML, and explore
-          everything from web design to Python automation.
-        </p>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
 
-        <p>
-          More details about my journey, goals, personal achievements, and
-          mindset will be editable from the Admin Panel (by me only), and will
-          show up here in future updates.
-        </p>
+    <!-- Firebase Config -->
+    <script src="assets/js/firebaseconfig.js"></script>
 
-        <p>Thanks for visiting and being part of my journey!</p>
-      </section>
-    </main>
+    <!-- Load About Me content -->
+    <script>
+      const db = firebase.firestore();
+      const aboutText = document.getElementById("aboutText");
 
-    <footer>
-      <p>&copy; 2025 Harsh Prakash Mohod. All rights reserved.</p>
-    </footer>
+      db.collection("aboutme")
+        .doc("main")
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            aboutText.textContent = doc.data().text;
+          } else {
+            aboutText.textContent = "No about me content available yet.";
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching About Me:", error);
+          aboutText.textContent = "Error loading content.";
+        });
+    </script>
 
-    <script src="js/navbar.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script>
+    <script src="../firebase.js" defer></script>
+    <script src="../admin.js" defer></script>
   </body>
 </html>
