@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Skills - Harsh Mohodo</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Harsh Mohodo</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="skills.html">Skills</a></li>
+      </ul>
+    </div>
+
+    <section class="container">
+      <h2>My Skills</h2>
+      <canvas id="skillChart" width="400" height="400"></canvas>
+    </section>
+
+    <script>
+      const ctx = document.getElementById("skillChart").getContext("2d");
+      const skillChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Python", "AI/ML", "HTML", "CSS", "JavaScript"],
+          datasets: [
+            {
+              label: "Skill Distribution",
+              data: [40, 25, 15, 10, 10],
+              backgroundColor: [
+                "#3b82f6",
+                "#10b981",
+                "#facc15",
+                "#ec4899",
+                "#8b5cf6",
+              ],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+    </script>
+  </body>
+</html>
