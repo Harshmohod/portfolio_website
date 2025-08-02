@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume - Harsh Mohodo</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Resume - Harsh Mohod</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!-- Navbar -->
     <div class="navbar">
-      <h1>Harsh Mohodo</h1>
+      <h1>Harsh Mohod</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="resume.html">Resume</a></li>
@@ -17,31 +18,43 @@
       </ul>
     </div>
 
-    <section class="container">
+    <!-- Resume Section -->
+    <section class="resume-section">
       <h2>My Resume</h2>
-      <div style="text-align: center; margin-bottom: 2rem">
-        <a href="assets/files/Harsh_Mohodo_Resume.pdf" class="btn" download
-          >Download Resume</a
-        >
+
+      <!-- Download Button -->
+      <div>
+        <a href="/resume.pdf" class="resume-btn" download>Download Resume</a>
       </div>
 
-      <div class="grid">
-        <div class="card">
+      <!-- Resume Cards -->
+      <div class="resume-container">
+        <!-- Education -->
+        <div class="resume-card">
           <h3>Education</h3>
           <p>
-            <strong>B.Tech in Computer Science</strong><br />XYZ University,
-            2021–2025
+            <strong>B.Tech in Computer Science</strong><br />
+            GH Raisoni, Amravati University<br />
+            <em>2022–2026</em>
           </p>
         </div>
-        <div class="card">
+
+        <!-- Internship -->
+        <div class="resume-card">
           <h3>Internship</h3>
-          <p><strong>AI Developer Intern</strong><br />XYZ Labs, 2024</p>
+          <p>
+            <strong>Data Analyst Intern</strong><br />
+            Savycode, Zsoftware IT Park, Nagpur<br />
+            <em>June 2025 – Dec 2025</em>
+          </p>
         </div>
-        <div class="card">
+
+        <!-- Achievements -->
+        <div class="resume-card">
           <h3>Achievements</h3>
           <ul>
             <li>Built 10+ personal & academic projects</li>
-            <li>Hackathon finalist 2023</li>
+            <li>This website is developed by me</li>
           </ul>
         </div>
       </div>

@@ -1,19 +1,25 @@
-/* ---------- GENERAL RESET ---------- */
+/* Reset and global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
 }
 
+/* Background image applied to all pages */
+/* style.css */
 body {
-  background: linear-gradient(to right, #111827, #1f2937);
-  color: #f3f4f6;
-  line-height: 1.6;
+  font-family: "Poppins", sans-serif;
+  background: url("../assets/images/background.jpg") no-repeat center center
+    fixed;
+  background-size: cover;
+  color: #ffffff;
   font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
+/* ---------- GLOBAL ELEMENTS ---------- */
 a {
   text-decoration: none;
   color: inherit;
@@ -28,12 +34,53 @@ img {
   display: block;
 }
 
-/* ---------- CONTAINER ---------- */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 2rem 0;
+.skills-section {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  text-align: center;
+  color: #f8fafc;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skills-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #facc15;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.skill-item img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.8rem;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.skill-item p {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.skill-item:hover {
+  transform: scale(1.1);
 }
 
 /* ---------- NAVBAR ---------- */
@@ -41,16 +88,17 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1f2937;
+  background-color: rgba(17, 24, 39, 0.85);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
+  border-radius: 0 0 10px 10px;
 }
 
 .navbar h1 {
   color: #3b82f6;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 600;
 }
 
@@ -60,71 +108,185 @@ img {
 }
 
 .navbar ul li a {
-  color: #f9fafb;
+  color: #fcf114;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: 0.3s;
 }
 
 .navbar ul li a:hover {
-  color: #3b82f6;
+  color: #60a5fa;
 }
 
-/* ---------- HERO / HOME ---------- */
+/* ---------- HERO SECTION ---------- */
 .hero {
+  min-height: 90vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
+  flex-direction: column;
   text-align: center;
   padding: 2rem;
+  backdrop-filter: blur(3px);
 }
 
 .hero h2 {
-  font-size: 2.5rem;
-  color: #60a5fa;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
+  color: #60a5fa;
 }
 
 .hero p {
-  font-size: 1.1rem;
-  color: #d1d5db;
+  font-size: 1.2rem;
   max-width: 700px;
+  color: #e5e7eb;
 }
 
-/* ---------- SECTIONS ---------- */
+/* ---------- SECTION HEADINGS ---------- */
 section {
   padding: 4rem 0;
 }
 
 section h2 {
+  font-size: 2.2rem;
   text-align: center;
-  font-size: 2rem;
   margin-bottom: 2rem;
   color: #93c5fd;
 }
 
-/* ---------- CARDS ---------- */
+/* ---------- CARD STYLES ---------- */
 .card {
-  background-color: #1e293b;
+  background: rgba(30, 41, 59, 0.85);
   padding: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
+/* ---------- EDUCATION GRID ---------- */
+
+.education-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: rgb(252, 246, 246);
+}
+
+.education-section h2 {
+  font-size: 2.5rem;
+  color: #60a5fa;
+  margin-bottom: 1rem;
+}
+
+.education-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.education-container.horizontal-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.education-card {
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+}
+
+.education-card h3 {
+  margin-bottom: 1rem;
+  color: #93c5fd;
+  font-size: 1.3rem;
+}
+
+/* ----------  RRESUME GRID ---------- */
+
+.resume-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: rgb(252, 246, 246);
+}
+
+.resume-section h2 {
+  font-size: 2.5rem;
+  color: #60a5fa;
+  margin-bottom: 1rem;
+}
+
+.resume-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.resume-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2563eb, #7e22ce);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.resume-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.resume-card {
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s;
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+}
+
+.resume-card h3 {
+  margin-bottom: 1rem;
+  color: #93c5fd;
+  font-size: 1.3rem;
+}
+
 /* ---------- BUTTONS ---------- */
 .btn {
   background-color: #3b82f6;
-  color: white;
-  padding: 0.75rem 1.5rem;
+  color: rgb(20, 63, 218);
+  padding: 6px 12px;
   border: none;
   border-radius: 0.5rem;
-  font-weight: bold;
+  font-weight: 0.85rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -135,14 +297,15 @@ section h2 {
 
 /* ---------- FOOTER ---------- */
 footer {
-  background-color: #111827;
+  background-color: rgba(17, 24, 39, 0.85);
   text-align: center;
   padding: 1.5rem 0;
-  color: #9ca3af;
+  color: #d1d5db;
   font-size: 0.9rem;
+  border-top: 1px solid #374151;
 }
 
-/* ---------- GRID ---------- */
+/* ---------- GRID SYSTEM ---------- */
 .grid {
   display: grid;
   gap: 2rem;
@@ -167,5 +330,9 @@ footer {
 
   .hero h2 {
     font-size: 2rem;
+  }
+
+  section h2 {
+    font-size: 1.7rem;
   }
 }

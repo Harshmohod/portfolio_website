@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Me - Harsh Mohodo</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>About Me - Harsh Mohod</title>
+    <link rel="stylesheet" href="css/style.css" />
     <style>
       .about-section {
         background: linear-gradient(to right, #0f172a, #1e293b);
@@ -22,16 +22,54 @@
         color: #facc15;
       }
 
+      .about-section-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .about-section img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 2rem;
+        border: 4px solid #facc15;
+      }
+
       .about-section p {
         font-size: 1.1rem;
         line-height: 1.8;
         white-space: pre-line;
       }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #0f172a;
+        color: #fff;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .navbar ul li a {
+        text-decoration: none;
+        color: hsl(56, 96%, 53%);
+        font-weight: bold;
+      }
     </style>
   </head>
+
   <body>
     <div class="navbar">
-      <h1>Harsh Mohodo</h1>
+      <h1>Harsh Mohod</h1>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="aboutme.html">About Me</a></li>
@@ -41,41 +79,76 @@
     </div>
 
     <section class="about-section">
-      <h2>About Me</h2>
-      <p id="aboutText">
-        <!-- About Me content will load here -->
-      </p>
+      <div class="about-section-content">
+        <img src="assets/images/profile.jpg" alt="Harsh Mohodo" />
+        <h2>About Me</h2>
+        <p>
+          Hi, I’m Harsh Prakash Mohod, a passionate data analyst with a strong
+          business mindset and a keen eye for unlocking insights that drive
+          smarter decisions. With a solid foundation in data analysis, I
+          specialize in transforming complex data into actionable strategies.
+          I’m also a trader, navigating the world of markets with precision and
+          strategic foresight. My goal is always to leverage my skills to create
+          value, innovate, and stay ahead of the curve in both tech and
+          business. Beyond my professional endeavors, I’m a person who thrives
+          on living life according to my own values. I believe in the importance
+          of integrity, hard work, and loyalty. My family is my core, and I draw
+          much of my strength and inspiration from the people I care about. I’m
+          also deeply passionate about sports, especially basketball, which has
+          taught me resilience, discipline, and the importance of collaboration.
+          As College Sports President, I’ve had the privilege of leading teams
+          and organizing events that foster community and excellence. When I’m
+          not coding or competing, you’ll likely find me enjoying a bike ride –
+          it’s my way to disconnect, recharge, and keep my mind clear. In
+          everything I do, whether in tech or sports, I strive for growth and
+          challenge myself to push the limits of what’s possible. I look forward
+          to leveraging my skills, passion, and leadership in my next
+          professional opportunity.
+        </p>
+      </div>
     </section>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <!-- Firebase SDKs -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    <!-- Firebase Config -->
-    <script src="assets/js/firebaseconfig.js"></script>
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID",
+      };
 
-    <!-- Load About Me content -->
-    <script>
-      const db = firebase.firestore();
-      const aboutText = document.getElementById("aboutText");
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-      db.collection("aboutme")
-        .doc("main")
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            aboutText.textContent = doc.data().text;
+      async function loadAboutMe() {
+        const aboutText = document.getElementById("aboutText");
+        try {
+          const docRef = doc(db, "aboutme", "main");
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            aboutText.textContent = docSnap.data().text;
           } else {
-            aboutText.textContent = "No about me content available yet.";
+            aboutText.textContent = "No about me content available.";
           }
-        })
-        .catch((error) => {
-          console.error("Error fetching About Me:", error);
+        } catch (error) {
+          console.error("Error loading About Me:", error);
           aboutText.textContent = "Error loading content.";
-        });
+        }
+      }
+
+      // Optional: comment out below if you're using static content now
+      // loadAboutMe();
     </script>
 
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>

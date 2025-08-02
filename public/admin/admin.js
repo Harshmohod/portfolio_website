@@ -1,5 +1,3 @@
-// admin.js
-
 // ✅ Firebase v9+ Modular SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
@@ -15,6 +13,10 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // 🔐 Your Firebase configuration
 const firebaseConfig = {
@@ -30,6 +32,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
+const auth = getAuth(app);
+
+// 🔐 Admin Login Function
+window.login = async function () {
+  const email = document.getElementById("admin-email").value;
+  const password = document.getElementById("admin-password").value;
+  const errorMsg = document.getElementById("error-msg");
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    console.log("Logged in:", userCredential.user);
+    window.location.href = "admin/index.html"; // redirect to admin panel
+  } catch (error) {
+    console.error(error);
+    errorMsg.innerText = "Invalid credentials. Please try again.";
+  }
+};
 
 // 🔤 Update About Me Text
 const aboutForm = document.getElementById("aboutForm");
